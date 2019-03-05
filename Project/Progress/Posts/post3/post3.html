@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Team Marf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../../../../index.html">Team MARF</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Team/team.html">The Team</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              The Project
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../../Design/design.html">Overview</a>
+              <a class="dropdown-item" href="../../progress.html">Progress <span class="sr-only">(current)</span></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Contact/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-10 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title mt-3">What's in a name</h2>
+            <p class="blog-post-meta">January 15, 2019 by Faye</p>
+            <p>Unlike in Romeo and Juliet, calling a card by any other name would not smell as sweet (or as accurate). As part of our card recognition algorithm, we have to be able to quickly extract the names of the cards from the images we take. Luckily, there's a package could pytesseract that's able to do so with a good amount of accuracy, after some image processing is done on the picture.</p>
+            <hr>
+            <h3>The Process</h3>
+            <div class="media">
+            <div class="media-left media-top">
+              <img class="media-object rounded" src="card.jpg">
+            </div>
+            <div class="media-body ml-3">
+              <p>The pictures we take come in the format of what's shown here on the left. The top half of the card holds all of the information we need: the name on the top left of the card, and the set symbol on the bottom right of the card. We can get the rest of the information (such as the colour of the card and its value) using just these two qualifiers. In this post, however, we'll focus on how we extracted the name. </p>
+              <p>This is already pretty good, but when I tried using pytesseract to extract the text from the card, it would get confused by the picture and the symbols on the card and output some nonsense text (my personal favourite output for the above card was Cemetary Recruitment ??Ski!, it seemed like pytesseract missed going outside, which I can empathize with).</p>
+            </div>
+          </div>
+            <p></p>
+            <p>Some image processing was required, and I decided to crop the picture straight to the area of text that we required (it's easy to do this under the assumption that all of the cards will be in the same position) and make it black and white. There was an option to do OCR (Optical Character Recognition), which uses software to detect where the text is and sends that area to pytesseract to be processed, but that would have been a lot of work when just cropping the image would achieve the same result. The intermediate image looked like this:</p>
+            <img src="pcard.png">
+            <p>Pretty good! Pytesseract had no difficulty extracting the text from an image like this, and we were able to get 100% accuracy with extracting the name from the card every time (in a test of ~10 cards).</p>
+
+            <div class="media">
+            <div class="media-left media-top">
+              <img class="media-object rounded" src="console.png">
+            </div>
+            <div class="media-body ml-3">
+              <p>And there's the name of the card printed out to the console. It's pretty incredible the amount of work it takes to do something that we, human beings, take for granted. I'd like to take this opportunity to thank the great minds behind opencv and pytesseract, without who this project probably wouldn't exist. You make our lives a trillion times easier.</p>
+            </div>
+          </div>
+          <p></p>
+            <p><a href="../post2/post2.html">Prev</a> | Next</p>
+            <p><a href="../../progress.html">All Posts</a></p>
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+       </div><!-- /.row -->
+
+     </main><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../../bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
