@@ -64,14 +64,13 @@
         .then(response => response.json())
         .then(function(myJSON) {
           console.log(myJSON.cards)
+          $(function () {
+            $('#table').bootstrapTable({
+                data: myJSON.cards
+            });
+         });
         })
 
-      var mydata = myJSON.cards;
-      $(function () {
-          $('#table').bootstrapTable({
-              data: mydata
-          });
-      });
     </script>
     <script>
       $(document).ready(function(){
