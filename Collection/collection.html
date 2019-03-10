@@ -61,6 +61,9 @@
     <script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
     <script>
         var $table = $('#table');
+        fetch("data.json")
+          .then(response => response.json())
+          .then(json => console.log(json));
         var mydata = 
     [
         {
@@ -111,13 +114,7 @@
       });
     });
     </script>
-    <script type="text/javascript">
-      $.ajax ({ url: 'data.json', method: "GET"})
-      .success(function (response) {
-         var json = $.parseJSON (response);
-         console.log(json)
-      });
-    </script>
+    <script type="text/javascript" src="data.json"></script>
     <!--
     <script>
       const url = 'https://ec2-18-220-159-65.us-east-2.compute.amazonaws.com/sortCommands'
