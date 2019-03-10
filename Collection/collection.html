@@ -57,6 +57,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bundle.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
     <script>
         var $table = $('#table');
@@ -109,6 +110,13 @@
         });
       });
     });
+    </script>
+    <script type="text/javascript">
+      $.ajax ({ url: 'data.json', method: "GET"})
+      .success(function (response) {
+         var json = $.parseJSON (response);
+         console.log(json)
+      });
     </script>
     <!--
     <script>
