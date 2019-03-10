@@ -63,39 +63,7 @@
         fetch("data.json")
           .then(response => response.json())
           .then(json => console.log(json.cards));
-        var mydata = 
-    [
-        {
-            "foiled": "yes",
-            "name": "Primal Druid",
-            "price": "1.50"
-        },
-        {
-            "foiled": "no",
-            "name": "Raise the Alarm",
-            "price": "1.32"
-        },
-        {
-            "foiled": "no",
-            "name": "Arcbound Ravager",
-            "price": "2.89"
-        },
-        {
-            "foiled": "yes",
-            "name": "Avjra Beastmaster",
-            "price": "3.11"
-        },
-        {
-            "foiled": "no",
-            "name": "Dragonlord Kolaghan",
-            "price": "4.97"
-        },
-        {
-            "foiled": "no",
-            "name": "Loxodon Restorer",
-            "price": "5.18"
-        }
-    ];
+        var mydata = json.cards;
 
     $(function () {
         $('#table').bootstrapTable({
