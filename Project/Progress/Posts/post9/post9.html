@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Team Marf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../../../../index.html">Team MARF</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Team/team.html">The Team</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              The Project
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../../Design/design.html">Overview</a>
+              <a class="dropdown-item" href="../../progress.html">Progress <span class="sr-only">(current)</span></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Contact/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-10 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title mt-3">What's in an updated name?</h2>
+            <p class="blog-post-meta">March 6, 2019 by Faye</p>
+            <p>An update on roses and how they smell, as well as a framework for viewing your collection online!</p>
+            <hr>
+            <p></p>
+            <p>In <a href="../post3/post3.html">a previous blog post</a>, I stated: </p>
+            <div class="text-center">
+              <img src="mistakes.png" width="700" height="93">
+            </div>
+            <p></p>
+            <p>Well, when we actually took some pictures using the tower, I found out that the tolerancing of how much the card could move wasn't as tight as I thought it was. Basically, this meant that I couldn't rely on just cropping anymore, and I had to implement that OCR stuff that I said was "a lot of work". Whoops! So now we have OCR to find the area of text, and our text recognition rate is now back up to 100% (in a test of 40 cards). Great! Unfortunately this slows down our performance because a lot more processing now has to happen on the Pi, but we decided making the user wait another second was worth having a more accurate algorithm. (If you come see us during symposium, feel free to ask about how it works in more detail!)</p>
+            <p></p>
+            <p>A huge surprise while I was testing the algorithm on the raspberry pi was how big of a difference tesseract v3 and tesseract v4 made with the text recognition. Whatever those researchers did between v3 and v4 was a huge relief for me, as tesseract v3 actually only "read" the text successfully about 50% of the time under some very exact situations. Additionally, the raspberry pi doesn't have an automatic installer for tesseract v4 (usually a simple "pip3 install tesseract" command in the console would do), so I had to manually pull tesseract v4 from Git, build it, then install it on the pi (especially annoying when doing at 6 in the morning).</p>
+            <p></p>
+            <div class="text-center">
+              <img src="collection.png" width="750" height="403">
+            </div>
+            <p></p>
+            <p>Another update on my part is getting an online copy of the user's collection up, which you can find <a href="../../../../Collection/collection.html">here</a>! Right now (as of writing this post) it's just a bunch of test data, but I basically have a script that pulls the user's data from our database, spits it into a JSON file, and then gets processed when the user loads this webpage. This is actually the very, VERY, nonideal way to do this, but unfortunately our database doesn't have the proper HTTPS certificates and Google Chrome (the web browser I'm using to test with) absolutely ABHORS queries to things that aren't "secure".</p>
+            <p></p>
+            <p>If I've learned anything about my experiences during school, co-op, and now this FYDP.....there's a way to do anything if you're willing to make some questionable design decisions.</p>
+            <p></p>
+            <p><a href="../post8/post8.html">Prev</a> | <a href="../post10/post10.html">Next</a></p>
+            <p><a href="../../progress.html">All Posts</a></p>
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+       </div><!-- /.row -->
+
+     </main><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../../bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Team Marf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../../../../index.html">Team MARF</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Team/team.html">The Team</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              The Project
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../../Design/design.html">Overview</a>
+              <a class="dropdown-item" href="../../progress.html">Progress <span class="sr-only">(current)</span></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Contact/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-10 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title mt-3">Building a Backend</h2>
+            <p class="blog-post-meta">February 10, 2019 by Robbie</p>
+            <p>In order to sort a card, you first need to understand <i>what</i> a card is. We have the card’s name, but how do we go from a name to parameters that you can sort? By building a database of cards that we search from, we can store information, such as the card’s colour, value, and set name, which can be used to sort the card. This database can also store users’ collection of cards, sort commands, and other pieces of info. </p>
+            <hr>
+            <p></p>
+            <p>MySQL was an easy choice for the database format, as it allows us to select cards by numerous parameters (such as all red and white cards) or all cards worth over some threshold. Amazon RDS was also an easy choice to host this database, as the free tier was more than sufficient to hold all the needed data. A cloud-based solution was also valuable because it was trivial to update the pricing data or perform database migrations. It would also allow users to have a record of their collection without needing to have access to the Pi.</p>
+            <div class="media">
+            <div class="media-left media-top">
+              <img class="media-object rounded" src="scryfall.png" width="200" height="197">
+            </div>
+            <div class="media-body ml-3">
+              <p>But where do we get that data? As it turns out, there are a few options. The first one we found was Scryfall, which had bulk data on all cards available for free via their API. Their bulk data had colour, set, and the names for each card, which would have been all we needed if we were just looking to sort by colour. However, we also needed to sort by value. Hence, Scryfall’s bulk data would not be sufficient. </p>
+            </div>
+          </div>
+            <p></p>
+            <p>Enter TCG Player and their API. Unlike Scryfall, it did not contain info such as card colour or set name, but it did contain the pricing data for each edition of every card. Between the two data sources, a simple Python script was written that parsed Scryfall’s bulk data to get the card properties, and then called TCG Player to get the card pricing, before inserting all that info into our database. </p>
+            <p></p>
+            <p>However, we now need an easy way to access that data. We could have our Raspberry Pi just open a MySQL connection and query the database directly, but that is a bit inelegant. We can make our lives easier and simplify the work that has to be done on the Pi’s side. So, let’s make an API of our own. </p>
+            <p></p>
+            <div class="text-center">
+              <img src="flask.png" width="400" height="170">
+            </div>
+            <p>Flask is a popular framework for developing web apps in Python thanks to it’s low setup cost and ease of use. A Flask server was written, which had several routes allowing the Raspberry Pi to easily access the data without any of the cruft of writing and parsing SQL queries. It was then hosted on Amazon EC2, where we can access it at any time. </p>
+
+            <div class="media">
+            <div class="media-left media-top">
+              <img class="media-object rounded" src="db.png" width="418" height="700">
+            </div>
+            <div class="media-body ml-3">
+              <p>An example route and response is shown to the left, where the /cardInfo route is being used to get the details and pricing for the card ‘Arcbound Ravager’. As can be see, the info for the card is formatted in an easy to parse layout for the Pi. It is also possible to post info to the database through the API via a similar method. </p>
+              <p>This database and API forms the backbone of the software side of the project, allowing us to easily send and get relevant and up to date card info on any card we may want. </p>
+            </div>
+          </div>
+          <p></p>
+            <p><a href="../post4/post4.html">Prev</a> | <a href="../post6/post6.html">Next</a></p>
+            <p><a href="../../progress.html">All Posts</a></p>
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+       </div><!-- /.row -->
+
+     </main><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../../bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

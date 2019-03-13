@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Team Marf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../../../../index.html">Team MARF</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Team/team.html">The Team</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              The Project
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../../Design/design.html">Overview</a>
+              <a class="dropdown-item" href="../../progress.html">Progress <span class="sr-only">(current)</span></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../../Contact/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-10 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title mt-3">Weaving a Neural Net</h2>
+            <p class="blog-post-meta">February 27, 2019 by Robbie</p>
+            <p>We now have the card names and the card stats (as outlined in previous blog posts), but how can we match the two together? The challenge is that the card name is not sufficient for identifying a single trading card, as multiple editions of each trading card exist. The colour property of each card is consistent, so when we are sorting by colour it doesn’t matter which edition we are looking at. However, when sorting by value we must differentiate between them.</p>
+            <hr>
+            <p></p>
+            <p>One option is to recognize the artwork of each card, as different editions of a card have different pieces of art associated with them. For example, see three different versions of the card Arcbound Ravager below.</p>
+            <div class="text-center">
+              <img src="arcbound.png" width="700" height="337">
+            </div>
+            <p>However, the trouble becomes that there is over 44,000 Magic: The Gathering trading cards (counting different editions of the same card). That means differentiating between 44,000 thousand different pieces of art. Even storing all the different images at a good resolution would be a memory-consuming task, not to mention the run time difficulty of actually matching a picture of a card to the one in the stack. So, an alternate solution is required. </p>
+            <p></p>
+            <p>The answer lies in the set symbols. Each edition, also called a set, has a unique icon that is present on every card. It is easier to recognize the set symbol, because there are only ~210 distinct icons to recognize, as opposed to ~44,000. In addition, each set symbol is in the same relative location of the card, making it possible to quickly identify its location without using any advanced algorithms.</p>
+            <p></p>
+            <p>To recognize the card, it was decided that Tensorflow would be used. Tensorflow is a widely used Machine Learning framework for Python that allows for you to quickly build and train your own neural networks for image recognition.</p>
+            <p></p>
+            <p> The most difficult part of designing these neural nets was acquiring the data. For the foil recognition, it was necessary to take numerous photos of foiled and regular cards using the mechanical setup. One challenge there was that we only had around 30 foiled cards in total. While it is possible to increase that number with data augmentation, we decided to ask friends for some of their foiled cards, so that the original dataset would be larger and we could avoid the potential pitfall of overfitting on some feature which might be present in our original 30 foiled cards. </p>
+            <p></p>
+            <p>For the set symbol recognition, Scryfall’s API had a collection of every card’s art available to download, which is where we acquired the set icon data. In addition, Scryfall also had the high quality vector images of the set icons available, so those were downloaded and manipulated to augment our dataset. </p>
+            <p></p>
+            <p>After collecting all the data, it was on to designing the neural networks. Thankfully, Tensorflow’s extensive documentation proved very useful in learning how to design a good system. The biggest stumbling block for the set icon neural net was that the original setup was overfitting to a significant degree, and the original images weren’t being parsed very well when being fed into the neural net, resulting in initially poor results. However, these problems were eventually solved and we now have a pair of working neural nets. </p>
+            <div class="text-center">
+              <img src="foil.png" width="800" height="651">
+            </div>
+            <p>Above is the test performance of the foil classifier on several cards. The true card behaviour is in the brackets, while the network’s guess and it’s confidence in that guess is shown on the left. As can be seen, it classified all images correctly, and to a reasonable degree of confidence. </p>
+          </div>
+          <p></p>
+            <p><a href="../post6/post6.html">Prev</a> | <a href="../post8/post8.html">Next</a></p>
+            <p><a href="../../progress.html">All Posts</a></p>
+          </div><!-- /.blog-post -->
+
+        </div><!-- /.blog-main -->
+
+       </div><!-- /.row -->
+
+     </main><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../../../bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
