@@ -50,11 +50,12 @@
             <div class="text-center">
               <img src="arcbound.png" width="700" height="337">
             </div>
-            <p>However, the trouble becomes that there is over 44,000 Magic: The Gathering trading cards (counting different editions of the same card). That means differentiating between 44,000 thousand different pieces of art. Even storing all the different images at a good resolution would be a memory-consuming task, not to mention the run time difficulty of actually matching a picture of a card to the one in the stack. So, an alternate solution is required. </p>
+            <p></p>
+            <p>However, the trouble becomes that there is over 44,000 Magic: The Gathering trading cards (counting different editions of the same card). That means differentiating between 44,000 different pieces of art. Even storing all the different images at a good resolution would be a memory-consuming task, not to mention the run time difficulty of actually matching a picture of a card to the one in the stack. So, an alternate solution is required. </p>
             <p></p>
             <p>The answer lies in the set symbols. Each edition, also called a set, has a unique icon that is present on every card. It is easier to recognize the set symbol, because there are only ~210 distinct icons to recognize, as opposed to ~44,000. In addition, each set symbol is in the same relative location of the card, making it possible to quickly identify its location without using any advanced algorithms.</p>
             <p></p>
-            <p>To recognize the card, it was decided that Tensorflow would be used. Tensorflow is a widely used Machine Learning framework for Python that allows for you to quickly build and train your own neural networks for image recognition.</p>
+            <p>To recognize the card, it was decided that Tensorflow would be used. Tensorflow is a widely used Machine Learning framework for Python that allows you to quickly build and train your own neural networks for image recognition.</p>
             <p></p>
             <p> The most difficult part of designing these neural nets was acquiring the data. For the foil recognition, it was necessary to take numerous photos of foiled and regular cards using the mechanical setup. One challenge there was that we only had around 30 foiled cards in total. While it is possible to increase that number with data augmentation, we decided to ask friends for some of their foiled cards, so that the original dataset would be larger and we could avoid the potential pitfall of overfitting on some feature which might be present in our original 30 foiled cards. </p>
             <p></p>
