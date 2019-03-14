@@ -41,35 +41,28 @@
         <div class="col-md-10 blog-main">
 
           <div class="blog-post">
-            <h2 class="blog-post-title mt-3">What's in a name?</h2>
-            <p class="blog-post-meta">January 15, 2019 by Faye</p>
-            <p>Unlike in Romeo and Juliet, calling a card by any other name would not smell as sweet (or as accurate). As part of our card recognition algorithm, we have to be able to quickly extract the names of the cards from the images we take. Luckily, there's a package could pytesseract that's able to do so with a good amount of accuracy, after some image processing is done on the picture.</p>
+            <h2 class="blog-post-title mt-3">Electrical Update!</h2>
+            <p class="blog-post-meta">January 16, 2019 by Amanda</p>
+            <p>The good news: after last semester, most of the electrical components were already selected and we had a schematic diagram.</p>
             <hr>
-            <h3>The Process</h3>
-            <div class="media">
-            <div class="media-left media-top">
-              <img class="media-object rounded" src="card.jpg">
-            </div>
-            <div class="media-body ml-3">
-              <p>The pictures we take come in the format of what's shown here on the left. The top half of the card holds all of the information we need: the name on the top left of the card, and the set symbol on the bottom right of the card. We can get the rest of the information (such as the colour of the card and its value) using just these two qualifiers. In this post, however, we'll focus on how we extracted the name. </p>
-              <p>This is already pretty good, but when I tried using pytesseract to extract the text from the card, it would get confused by the picture and the symbols on the card and output some nonsense text (my personal favourite output for the above card was Cemetary Recruitment ??Ski!, it seemed like pytesseract missed going outside, which I can empathize with).</p>
-            </div>
-          </div>
             <p></p>
-            <p>Some image processing was required, and I decided to crop the picture straight to the area of text that we required (it's easy to do this under the assumption that all of the cards will be in the same position) and make it black and white. There was an option to do OCR (Optical Character Recognition), which uses software to detect where the text is and sends that area to pytesseract to be processed, but that would have been a lot of work when just cropping the image would achieve the same result. The intermediate image looked like this:</p>
-            <img src="pcard.png">
-            <p>Pretty good! Pytesseract had no difficulty extracting the text from an image like this, and we were able to get 100% accuracy with extracting the name from the card every time (in a test of ~10 cards).</p>
-
             <div class="media">
             <div class="media-left media-top">
-              <img class="media-object rounded" src="console.png">
+              <img class="media-object rounded" src="handSchem.png" width="350" height="413">
             </div>
             <div class="media-body ml-3">
-              <p>And there's the name of the card printed out to the console. It's pretty incredible the amount of work it takes to do something that we, human beings, take for granted. I'd like to take this opportunity to thank the great minds behind opencv and pytesseract, without who this project probably wouldn't exist. You make our lives a trillion times easier.</p>
+              <p>The bad news: the schematic in question was hand-drawn (it’s shown on the left) and some parts had to be re-selected, such as the motor drivers, which were originally specified to handle 1A. Different motor drivers would give a larger safety margin if any of the motors required more current than anticipated.</p>
+              <p>In addition to sensors, drivers, and power modules, we added in an emergency stop and a temperature sensor as safety features. The resulting schematic is down below. There’s a few settings on the motor driver chips that I’m not entirely sure of, so there’s test points and optional jumpers all over the place so we can, hopefully, do this with just one PCB iteration.</p>
             </div>
-          </div>
+            </div>
+            <p></p>
+            <p>Below is the schematic all drawn up properly in EagleCAD!</p>
+            <p></p>
+              <div class="text-center">
+              <img src="compSchem.png" width="700" height="362">
+            </div>
           <p></p>
-            <p><a href="../post3/post3.html">Prev</a> | <a href="../post5/post5.html">Next</a></p>
+            <p><a href="../post3/post3.html">Prev</a> | <a href="../post4a/post4a.html">Next</a></p>
             <p><a href="../../progress.html">All Posts</a></p>
           </div><!-- /.blog-post -->
 
